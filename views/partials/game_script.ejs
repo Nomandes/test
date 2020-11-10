@@ -1,0 +1,25 @@
+<script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            var socket = io();
+            $(".cards .card .card_inner").click(function(){
+                $(this).addClass('is_flipped');
+                console.log($(this).attr('id'))
+                socket.emit('card', $(this).attr('id'));
+            });
+            socket.on('card', function(msg){
+                $("#"+msg).addClass('is_flipped');
+            });
+            $("#turnEndButton").click(function(){
+                socket.emit('turn');
+            });
+            socket.on('turn', function(msg){
+                nextTurn();
+            });
+        });
+
+        function nextTurn(){
+            console.log("next Turn");
+        }
+</script>

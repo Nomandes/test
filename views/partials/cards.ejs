@@ -1,0 +1,22 @@
+<div class="cards">
+    <% game.forEach(function(card){ %>
+        <% if(card.color == 1){ %>
+        <div class="card blue">
+        <% }else if(card.color == 2){ %>
+        <div class="card red">
+        <% }else if(card.color == 3){ %>
+        <div class="card black">
+        <% }else if(card.color == 4){ %>
+        <div class="card bomb">
+        <% }; %>
+            <% if(card.turned){ %>
+            <div class="card_inner is_flipped" id='<%= game.indexOf(card)%>'>
+            <% }else{ %>
+            <div class="card_inner" id='<%= game.indexOf(card)%>'>
+            <% }; %>
+                <div class="card_front card_face"><%= card.word%></div>
+                <div class="card_back card_face"></div>
+            </div>
+        </div>
+    <% }); %>
+</div>
