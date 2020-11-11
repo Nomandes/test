@@ -82,19 +82,19 @@ function generateNewGame(jsonWords){
 
       // Assign new word to array
       gameArr.push(jsonWords[r]);
-      
+
       var pos = gameArr.length - 1;
-      
+
       //init taken value
       gameArr[pos] = Object.assign(gameArr[pos],{"turned":false});
-      
+
       while(true){
-        
+
         //End if all colors taken
         if(redCount == 0 && blueCount == 0 && blackCount == 0){
           break;
         }
-        
+
         //rnd color pick
         var colorRnd = Math.floor(Math.random() * 3);
 
@@ -114,13 +114,14 @@ function generateNewGame(jsonWords){
           break;
         }
       }
-    } 
+    }
   }
   // set the bomb at random place
   var bombRnd = Math.floor(Math.random() * 25);
   gameArr[gameArr.length - 1].color = gameArr[bombRnd].color;
   gameArr[bombRnd].color = 4;
   console.log(gameArr)
+  console.log("ÄNDERUNG");
 
   return gameArr;
 }
